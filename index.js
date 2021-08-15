@@ -1,7 +1,7 @@
 // //variables
 const checkButton = document.querySelector("#check-button");
 const birthDayInput = document.querySelector("#birthdate");
-const ResultOutput = document.querySelector("#result h1");
+const ResultOutput = document.querySelector("#result");
 
 checkButton.addEventListener("click", eventHandle);
 
@@ -220,15 +220,16 @@ function eventHandle(e) {
     if (!isPalindrome) {
       const [ctr1, nextDate] = getNextPalindromeDate(date);
       const [ctr2, prevDate] = getPreviousPalindromeDate(date);
+      ResultOutput.style.display = "block";
 
       if (ctr1 > ctr2) {
-        ResultOutput.innerText = `The nearest palindrome date is ${prevDate.day}-${prevDate.month}-${prevDate.year}, you missed by ${ctr2} days.`;
+        ResultOutput.innerHTML = `<h1>The nearest palindrome date is <span>${prevDate.day}-${prevDate.month}-${prevDate.year}</span>, you missed by <span>${ctr2}</span> days.</h1>`;
       } else {
-        ResultOutput.innerText = `The nearest palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, you missed by ${ctr1} days.`;
+        ResultOutput.innerHTML = `<h1>The nearest palindrome date is <span>${nextDate.day}-${nextDate.month}-${nextDate.year}</span>, you missed by <span>${ctr1}</span> days.</h1>`;
       }
 
     } else {
-      ResultOutput.innerText = 'Yay! Your birthday is palindrome!';
+      ResultOutput.innerHTML = '<h1>Yay! Your birthday is palindrome!</h1>';
     }
   }
 }
