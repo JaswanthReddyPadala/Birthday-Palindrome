@@ -187,14 +187,10 @@ function getPreviousPalindromeDate(date) {
   }
 }
 
-var bdayInput = document.querySelector('#bday-input');
-var showBtn = document.querySelector('#show-btn');
-var resultDiv = document.querySelector('#result');
-
 function eventHandle(e) {
   var bdayString = birthDayInput.value;
-
-  if (bdayString !== '') {
+  
+  if (bdayString) {
     var date = bdayString.split('-');
     var yyyy = date[0];
     var mm = date[1];
@@ -231,5 +227,9 @@ function eventHandle(e) {
     } else {
       ResultOutput.innerHTML = '<h1>Yay! Your birthday is palindrome!</h1>';
     }
+  }
+  else{
+    ResultOutput.style.display = "block";
+    ResultOutput.innerHTML = '<h1 class="error">Enter a valid date</h1>';
   }
 }
